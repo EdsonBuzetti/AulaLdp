@@ -1,0 +1,51 @@
+import javax.swing.JOptionPane;
+
+public class Restaurante {
+    public static void main(String[] args) {
+        
+        String opcao = JOptionPane.showInputDialog("Informe o pedido\n" + "1 – Hamburger\n" + "2 – Pizza\n" + "3 – Sair\n");
+
+    if(opcao.equals("2")){
+        String nome = JOptionPane.showInputDialog("Informe o sabor do Hamburger");
+        double valor = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor: "));
+        String artesanalDigitado = JOptionPane.showInputDialog("Você deseja carne Artesanal? S - sim\n N - nao");
+        boolean artesanalParaCalculo;
+        
+        if(artesanalDigitado.equals("S")){
+           artesanalParaCalculo  = true;
+        }
+        else{
+            artesanalParaCalculo = false;
+        }
+        Hamburger h = new Hamburger();
+        h.nome = nome;
+        h.valor = valor;
+        
+        double valorTotal = h.CalcularValor(artesanalParaCalculo);  
+        
+        JOptionPane.showMessageDialog(null,"Pedido" + valorTotal,"Pedido", JOptionPane.INFORMATION_MESSAGE);
+        
+    }
+        if(opcao.equals("1")){
+            String nome = JOptionPane.showInputDialog("Informe o sabor da Pizza");
+            double valor = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor: "));
+            String artesanalDigitado = JOptionPane.showInputDialog("Você deseja borda? S - sim\n N - nao");
+            boolean bordaParaCalculo;
+
+            if(artesanalDigitado.equals("S")){
+                bordaParaCalculo  = true;
+            }
+            else{
+              bordaParaCalculo = false;
+            }
+            Pizza p = new Pizza();
+            p.nome = nome;
+            p.valor = valor;
+
+            double valorTotal = p.CalcularValor(bordaParaCalculo);
+
+            JOptionPane.showMessageDialog(null,"Pedido" + valorTotal,"Pedido", JOptionPane.INFORMATION_MESSAGE);
+
+
+        }
+}
